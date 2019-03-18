@@ -1,0 +1,43 @@
+{% load i18n %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('form[id={{ spec.parameter_name }}_form]').submit(function (event) {
+        $('input[name={{ spec.parameter_name }}]').val($('input[id={{ spec.parameter_name }}_gte]').val()+";"+$('input[id={{ spec.parameter_name }}_lte]').val());
+    })
+})
+</script>
+<style>
+    button.during {
+        background: #79aec8;
+        padding: 4px 5px;
+        border: none;
+        width: 100%;
+        height: 35px;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    input.during {
+        width: 94%;
+    }
+
+</style>
+<h3>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h3>
+<ul>
+    <li>
+        {% with choices.0 as all_choice %}
+            <label for="{{ spec.parameter_name }}_gte"><span>{{ title }} от</span></label>
+            <input class="during" id="{{ spec.parameter_name }}_gte" type="number" min="0"
+                    name="area_gte"/>
+            <label for="{{ spec.parameter_name }}_lte">{{ title }} до</label>
+            <input class="during" type="number" id="{{ spec.parameter_name }}_lte" name="area_lte" min="0">
+        <form method="GET" id="{{ spec.parameter_name }}_form" action="">
+            <input type="hidden" value="{{ spec.value|default_if_none:'' }}" name="{{ spec.parameter_name }}"/>
+            <button class="during">Применить</button>
+        </form>
+        {% endwith %}
+    </li>
+</ul>

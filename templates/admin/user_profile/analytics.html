@@ -1,0 +1,29 @@
+{% extends 'admin/change_list.html' %}
+{% load humanize %}
+{% load static %}
+
+
+{% block extrastyle %}
+
+{% endblock%}
+
+
+{% block extrahead %}
+    <style>
+    table {
+        float: left;
+        margin-left: 40px;
+        border-collapse: collapse;
+        empty-cells: hide;
+    }
+    </style>
+{% endblock %}
+
+
+{% block content_title %}
+    <h1> Статистика объектов </h1>
+{% endblock %}
+{% block result_list %}
+    <div>hi</div>
+{% endblock %}
+{% block pagination %}{% endblock %}

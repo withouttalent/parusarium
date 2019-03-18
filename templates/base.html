@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Парусариум{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'parusarium/css/base.css' %}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<header>
+    <div class="main_header">
+        <div class="logo_name"><a class="no_link" href="/">Парусариум</a></div>
+        <div class="logo_name"><a class="no_link" href="/about">О проекте</a></div>
+    </div>
+</header>
+<div class="main">
+<div class="wrap_center">
+    <div class="logo">
+        <img src="{% static 'parusarium/img/logo.jpg' %}" alt="logo">
+    </div>
+{% block main %}
+
+{% endblock %}
+</div>
+</div>
+</body>
+</html>

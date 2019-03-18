@@ -1,0 +1,70 @@
+{% extends 'admin/change_list.html' %}
+{% load humanize %}
+{% load static %}
+
+
+{% block extrastyle %}
+
+{% endblock%}
+
+
+{% block extrahead %}
+    <style>
+    table {
+        float: left;
+        margin-left: 40px;
+        border-collapse: collapse;
+        empty-cells: hide;
+    }
+    </style>
+{% endblock %}
+
+
+{% block content_title %}
+    <h1> Статистика объектов </h1>
+{% endblock %}
+{% block result_list %}
+    <table>
+    <tbody>
+    <caption>Земельные участки</caption>
+    <tr>
+        <td>Город</td>
+        <td>Общее количество объектов</td>
+        <td>Авито</td>
+        <td>Циан</td>
+        <td>N30</td>
+    </tr>
+    {% for record in records %}
+    <tr>
+    <td>{{ record.city }}</td>
+    <td>{{ record.pk_sum }}</td>
+    <td>{{ record.avito_sum }}</td>
+    <td>{{ record.cian_sum }}</td>
+    <td>{{ record.n30_sum|default:"" }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <table>
+    <tbody>
+    <caption>Объекты капитального строительства</caption>
+    <tr>
+        <td>Город</td>
+        <td>Общее количество объектов</td>
+        <td>Авито</td>
+        <td>Циан</td>
+        <td>N30</td>
+    </tr>
+    {% for record in recordsoks %}
+    <tr>
+    <td>{{ record.city }}</td>
+    <td>{{ record.pk_sum }}</td>
+    <td>{{ record.avito_sum }}</td>
+    <td>{{ record.cian_sum }}</td>
+    <td>{{ record.n30_sum|default:"" }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}
+{% block pagination %}{% endblock %}
